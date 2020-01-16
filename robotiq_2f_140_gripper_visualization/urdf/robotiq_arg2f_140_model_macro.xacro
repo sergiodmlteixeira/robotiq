@@ -31,6 +31,9 @@
         </geometry>
       </collision>
     </link>
+    <gazebo reference="${prefix}${fingerprefix}_outer_knuckle">
+      <material>Gazebo/LightGray</material>
+    </gazebo>
   </xacro:macro>
 
   <xacro:macro name="outer_finger" params="prefix fingerprefix stroke">
@@ -62,6 +65,9 @@
         </geometry>
       </collision>
     </link>
+      <gazebo reference="${prefix}${fingerprefix}_outer_finger">
+        <material>Gazebo/DarkGray</material>
+      </gazebo>
   </xacro:macro>
 
   <xacro:macro name="inner_knuckle" params="prefix fingerprefix stroke">
@@ -93,6 +99,9 @@
         </geometry>
       </collision>
     </link>
+    <gazebo reference="${prefix}${fingerprefix}_inner_knuckle">
+        <material>Gazebo/DarkGray</material>
+      </gazebo>
   </xacro:macro>
 
   <xacro:macro name="inner_finger" params="prefix fingerprefix stroke">
@@ -124,6 +133,9 @@
         </geometry>
       </collision>
     </link>
+      <gazebo reference="${prefix}${fingerprefix}_inner_finger">
+        <material>Gazebo/LightGray</material>
+      </gazebo>
   </xacro:macro>
 
   <!-- Finger pad link, the default are the "big pads" with rubber-->
@@ -148,6 +160,9 @@
         </material>
       </collision>
     </link>
+      <gazebo reference="${prefix}${fingerprefix}_inner_finger_pad">
+        <material>Gazebo/LightGray</material>
+      </gazebo>
   </xacro:macro>
 
   <xacro:macro name="outer_finger_joint" params="prefix fingerprefix">
@@ -198,7 +213,8 @@
       <parent link="${prefix}robotiq_arg2f_base_link" />
       <child link="${prefix}left_outer_knuckle" />
       <axis xyz="-1 0 0" />
-      <limit lower="0" upper="0.7" velocity="2.0" effort="1000" />
+      <!-- <limit lower="0" upper="0.7" velocity="2.0" effort="1000" /> -->
+      <limit lower="-0.725" upper="0.725" velocity="2.0" effort="1000" />
     </joint>
     <xacro:finger_joints prefix="${prefix}" fingerprefix="left" reflect="1.0"/>
   </xacro:macro>
